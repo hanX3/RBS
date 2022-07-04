@@ -3,7 +3,8 @@ void get_data()
 {
   // TString str_name = TString::Format("Backing_Ta_1750keV");
   // TString str_name = TString::Format("target1_1750keV");
-  TString str_name = TString::Format("Backing_Ta_2");
+  // TString str_name = TString::Format("Backing_Ta_2");
+  TString str_name = TString::Format("target3_1750keV");
   cout << str_name << endl;
 
   TFile *file_in = TFile::Open(TString::Format("../../data/%s.root",str_name.Data()).Data());
