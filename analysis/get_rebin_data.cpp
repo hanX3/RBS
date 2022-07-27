@@ -1,10 +1,11 @@
 
-void get_data()
+void get_rebin_data(int rb)
 {
-  TString str_name = TString::Format("Backing_Ta_1750keV");
+  // TString str_name = TString::Format("Backing_Ta_1750keV");
   // TString str_name = TString::Format("target1_1750keV");
   // TString str_name = TString::Format("Backing_Ta_2");
   // TString str_name = TString::Format("target3_1750keV");
+  TString str_name = TString::Format("target2_center_position");
   cout << str_name << endl;
 
   TFile *file_in = TFile::Open(TString::Format("../../data/%s.root",str_name.Data()).Data());
@@ -20,10 +21,11 @@ void get_data()
   }
 
   ofstream file_out1;
-  file_out1.open(TString::Format("%s_170_degree.txt",str_name.Data()).Data());
+  file_out1.open(TString::Format("%s_170_degree_rebin_%d.txt",str_name.Data(), rb).Data());
 
+  h1->Rebin(rb);
   for(int i=0;i<h1->GetNbinsX();i++){
-    file_out1 << (Int_t)(h1->GetBinCenter(i+1)+0.5) << " " << h1->GetBinContent(i+1) << endl;
+    file_out1 << i+1 << " " << h1->GetBinContent(i+1) << endl;
   }
 
   file_out1.close();
@@ -36,10 +38,11 @@ void get_data()
   }
 
   ofstream file_out2;
-  file_out2.open(TString::Format("%s_165_degree.txt",str_name.Data()).Data());
+  file_out2.open(TString::Format("%s_165_degree_rebin_%d.txt",str_name.Data(), rb).Data());
 
+  h2->Rebin(rb);
   for(int i=0;i<h2->GetNbinsX();i++){
-    file_out2 << (Int_t)(h2->GetBinCenter(i+1)+0.5) << " " << h2->GetBinContent(i+1) << endl;
+    file_out2 << i+1 << " " << h2->GetBinContent(i+1) << endl;
   }
 
   file_out2.close();
