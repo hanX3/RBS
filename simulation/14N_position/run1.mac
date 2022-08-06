@@ -1,0 +1,10 @@
+/run/initialize
+/tracking/verbose 2
+
+/hits/verbose 2
+
+/gun/particle ion
+/gun/ion 7 14
+/gun/energy 100 keV
+
+/run/beamOn 10
