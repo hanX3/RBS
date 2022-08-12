@@ -8,6 +8,7 @@ class DetectorConstruction;
 class EventAction;
 class G4LogicalVolume;
 
+//
 class SteppingAction: public G4UserSteppingAction
 {
 public:

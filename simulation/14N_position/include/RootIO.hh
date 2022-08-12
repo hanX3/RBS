@@ -12,8 +12,7 @@ class TFile;
 class TH1D;
 class TTree;
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+//
 class RootIO
 {
 public:
@@ -39,7 +38,5 @@ private:
   TFile *file_in;
   TTree *tr;
 };
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 #endif

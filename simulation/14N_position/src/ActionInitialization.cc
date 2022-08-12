@@ -6,8 +6,7 @@
 #include "SteppingAction.hh"
 #include "RootIO.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+//
 ActionInitialization::ActionInitialization(G4int thesaveFlag)
 : G4VUserActionInitialization(),
   saveFlag(thesaveFlag)
@@ -15,13 +14,11 @@ ActionInitialization::ActionInitialization(G4int thesaveFlag)
 
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+//
 ActionInitialization::~ActionInitialization()
 {}
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+//
 void ActionInitialization::BuildForMaster() const
 {
   PrimaryGeneratorAction* fPriGen = new PrimaryGeneratorAction();
@@ -30,8 +27,7 @@ void ActionInitialization::BuildForMaster() const
   SetUserAction(new RunAction(fRootIO, fPriGen));
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+//
 void ActionInitialization::Build() const
 {
   PrimaryGeneratorAction* fPriGen = new PrimaryGeneratorAction();
@@ -43,5 +39,3 @@ void ActionInitialization::Build() const
   // DetectorConstruction *detconstruct = new DetectorConstruction();
   // SetUserAction(new SteppingAction(detconstruct));
 }
-
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

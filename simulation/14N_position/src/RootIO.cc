@@ -32,16 +32,16 @@ RootIO::~RootIO()
 void RootIO::Open()
 {
   if(flag_save){
-		time_t t;
-		struct tm* tt;
-		t=time(0);
-		tt=localtime(&t);
-		sprintf(file_name, "%d%02d%02d_%02dh%02dm%02ds", tt->tm_year+1900, tt->tm_mon, tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
+    time_t t;
+    struct tm* tt;
+    t=time(0);
+    tt=localtime(&t);
+    sprintf(file_name, "%d%02d%02d_%02dh%02dm%02ds", tt->tm_year+1900, tt->tm_mon, tt->tm_mday, tt->tm_hour, tt->tm_min, tt->tm_sec);
     G4cout << "\n----> Tree file is opened in " << file_name << G4endl;
 
     std::stringstream ss;
     ss.str("");
-		ss << DATAPATH << "/" << file_name << ".root";
+    ss << DATAPATH << "/" << file_name << ".root";
 
     file_in = new TFile(ss.str().c_str(), "RECREATE");
     //  check file_in
@@ -56,14 +56,14 @@ void RootIO::Open()
     tr->Branch("target_e", &target_e, "target_e/D");
     tr->Branch("target_xx", &target_xx, "target_xx/D");
     tr->Branch("target_yy", &target_yy, "target_yy/D");
-		tr->Branch("target_zz", &target_zz, "target_zz/D");
+    tr->Branch("target_zz", &target_zz, "target_zz/D");
 
     if(!tr){
-			G4cout << "\n can't create tree" << G4endl;
+      G4cout << "\n can't create tree" << G4endl;
       return ;
-		}
+    }
 
-		G4cout << "\n----> Tree file is opened in " << ss.str() << G4endl;
+    G4cout << "\n----> Tree file is opened in " << ss.str() << G4endl;
   }
 }
 
@@ -76,7 +76,7 @@ void RootIO::FillTree(G4int ii, G4double ee, G4double xx, G4double yy, G4double 
   target_yy = yy;
   target_zz = zz;
 
-	tr->Fill();
+  tr->Fill();
 }
 
 //
