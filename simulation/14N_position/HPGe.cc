@@ -7,6 +7,10 @@
 
 #include "G4UImanager.hh"
 #include "FTFP_BERT.hh"
+#include "QBBC.hh"
+#include "QGSP_BERT.hh"
+#include "QGSP_BIC.hh"
+#include "Shielding.hh"
 #include "G4StepLimiterPhysics.hh"
 
 #include "time.h"
@@ -34,7 +38,11 @@ int main(int argc,char** argv)
   G4RunManager* runManager = new G4RunManager;
 
   runManager->SetUserInitialization(new DetectorConstruction());
-  G4VModularPhysicsList* physicsList = new PhysicsList();
+  // G4VModularPhysicsList* physicsList = new PhysicsList();
+  G4VModularPhysicsList* physicsList = new QBBC;
+  // G4VModularPhysicsList* physicsList = new QGSP_BERT;
+  // G4VModularPhysicsList* physicsList = new QGSP_BIC;
+  // G4VModularPhysicsList* physicsList = new Shielding;
   runManager->SetUserInitialization(physicsList);
   
   runManager->SetUserInitialization(new ActionInitialization(saveFlag));
